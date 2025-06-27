@@ -5,18 +5,15 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Password;
+use Illuminate\Auth\Events\PasswordReset;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
 
 class AuthController extends Controller
 {
     /**
      * Register a new user and redirect based on role.
-     *
-     * @param Request $request
-     */
-    /**
-     * Register a new user and redirect based on role.
-     *
-     * @param Request $request
      */
     public function register(Request $request)
     {
@@ -25,41 +22,20 @@ class AuthController extends Controller
             'email' => 'required|string|email|max:255|unique:users',
             'phone' => 'required|string|max:20',
             'password' => 'required|string|min:8|confirmed',
-            'role' => 'sometimes|string|in:user,admin,manager', // Optional role field
+            'role' => 'sometimes|string|in:user,admin,manager',
         ]);
 
         $data['password'] = bcrypt($data['password']);
-        $data['role'] = $data['role'] ?? 'user'; // Default to 'user' if no role provided
+        $data['role'] = $data['role'] ?? 'user';
 
         $user = User::create($data);
-
-        // Log in the user after registration
         Auth::login($user);
 
-        // Determine redirect route based on user role
-        $redirectRoute = match ($user->role) {
-            // 'admin' => '/admin/dashboard',
-            'manager' => '/manager/dashboard',
-            'user' => '/user/dashboard',
-            default => '/dashboard'
-        };
-
-        // Check if request expects JSON (API) or is a web request
-        if ($request->expectsJson()) {
-            return response()->json([
-                'message' => 'User registered successfully',
-                'user' => $user,
-                'redirect' => $redirectRoute
-            ], 201);
-        }
-
-        return redirect()->intended($redirectRoute);
+        return redirect()->intended($this->redirectPath($user));
     }
 
     /**
      * Login a user and redirect based on role.
-     *
-     * @param Request $request
      */
     public function login(Request $request)
     {
@@ -68,45 +44,98 @@ class AuthController extends Controller
             'password' => 'required|string',
         ]);
 
-        if (Auth::attempt($credentials)) {
-            $user = Auth::user();
-
-            // Determine redirect route based on user role
-            $redirectRoute = match ($user->role) {
-                'admin' => '/admin/dashboard',
-                'manager' => '/manager/dashboard',
-                'user' => '/user/dashboard',
-                default => '/dashboard' // Fallback route
-            };
-
-            return response()->json([
-                'message' => 'Login successful',
-                'user' => $user,
-                'redirect' => $redirectRoute
-            ], 200);
+        if (Auth::attempt($credentials, $request->remember)) {
+            $request->session()->regenerate();
+            return redirect()->intended($this->redirectPath(Auth::user()));
         }
 
-        if (Auth::guard('admin')->attempt($credentials)) {
-            $user = Auth::guard('admin')->user();
+        return back()->withErrors([
+            'email' => 'The provided credentials do not match our records.',
+        ])->onlyInput('email');
+    }
 
-            // Redirect to admin dashboard
-            return response()->json([
-                'message' => 'Admin login successful',
-                'user' => $user,
-                'redirect' => '/admin/dashboard'
-            ], 200);
-        }
+    /**
+     * Show forgot password form.
+     */
+    public function showForgotPasswordForm()
+    {
+        return view('auth.forgot');
+    }
 
-        // If authentication fails, return an error response
-        return response()->json(['message' => 'Invalid credentials'], 401);
+    /**
+     * Handle forgot password request.
+     */
+    public function sendResetLinkEmail(Request $request)
+    {
+        $request->validate(['email' => 'required|email']);
+
+        $status = Password::sendResetLink(
+            $request->only('email')
+        );
+
+        return $status === Password::RESET_LINK_SENT
+            ? back()->with(['status' => __($status)])
+            : back()->withErrors(['email' => __($status)]);
+    }
+
+    /**
+     * Show reset password form.
+     */
+    public function showResetPasswordForm($token)
+    {
+        return view('auth.reset-password', ['token' => $token]);
+    }
+
+    /**
+     * Handle password reset.
+     */
+    public function resetPassword(Request $request)
+    {
+        $request->validate([
+            'token' => 'required',
+            'email' => 'required|email',
+            'password' => 'required|min:8|confirmed',
+        ]);
+
+        $status = Password::reset(
+            $request->only('email', 'password', 'password_confirmation', 'token'),
+            function ($user, $password) {
+                $user->forceFill([
+                    'password' => Hash::make($password)
+                ])->setRememberToken(Str::random(60));
+
+                $user->save();
+
+                event(new PasswordReset($user));
+            }
+        );
+
+        return $status === Password::PASSWORD_RESET
+            ? redirect()->route('login')->with('status', __($status))
+            : back()->withErrors(['email' => [__($status)]]);
     }
 
     /**
      * Logout the authenticated user.
      */
-    public function logout()
+    public function logout(Request $request)
     {
         Auth::logout();
-        return response()->json(['message' => 'Logout successful'], 200);
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+        return redirect('/');
+    }
+
+    /**
+     * Determine redirect path based on user role.
+     */
+    protected function redirectPath(User $user)
+    {
+        return match ($user->role) {
+            'admin' => '/admin/dashboard',
+            'manager' => '/manager/dashboard',
+            'user' => '/user/dashboard',
+            default => '/dashboard'
+        };
     }
 }

@@ -8,49 +8,69 @@ Route::get('/', function () {
 });
 
 // Authentication routes
+Route::middleware('guest')->group(function () {
+    // User registration
+    Route::get('/register', function () {
+        return view('auth.register');
+    })->name('register.form');
 
-// Renders the registration form view
-Route::get('/register', function () {
-    return view('auth.register');
-})->name('register.form');
-Route::post('/register', [AuthController::class, 'register'])->name('register');
+    Route::post('/register', [AuthController::class, 'register'])->name('register');
 
-// Renders the login form view for users
-Route::get('/login', function () {
-    return view('auth.login');
-})->name('login.form');
-Route::post('/login', [AuthController::class, 'login'])->name('login');
+    // User login
+    Route::get('/login', function () {
+        return view('auth.login');
+    })->name('login.form');
 
-Route::get('/logout', [AuthController::class, 'logout'])->name('logout')->middleware('auth');
-Route::post('/logout', [AuthController::class, 'logout'])->name('logout.post')->middleware('auth');
+    Route::post('/login', [AuthController::class, 'login'])->name('login');
 
+    // Admin login
+    Route::get('/admin/login', function () {
+        return view('auth.admin.admin-login');
+    })->name('admin.login.form');
 
-// Renders the login form view for admins
-Route::get('/admin/login', function () {
-    return view('auth..admin.admin-login');
-})->name('admin.login.form');
-Route::post('/admin/login', [AuthController::class, 'adminLogin'])->name('admin.login');
+    Route::post('/admin/login', [AuthController::class, 'login'])->name('admin.login');
 
+    // Manager login
+    Route::get('/manager/login', function () {
+        return view('auth.manager.login');
+    })->name('manager.login.form');
 
-// Renders the login form view for managers
-Route::get('/manager/login', function () {
-    return view('auth.manager.login');
-})->name('manager.login.form');
-Route::post('/manager/login', [AuthController::class, 'managerLogin'])->name('manager.login');
+    Route::post('/manager/login', [AuthController::class, 'login'])->name('manager.login');
 
-// Dashboard routes
-Route::get('/user/dashboard', function () {
-    return view('user.dashboard');
-})->name('user.dashboard')->middleware('auth');
+    // Password reset routes
+    Route::get('/forgot-password', [AuthController::class, 'showForgotPasswordForm'])
+        ->name('password.request');
 
-Route::get('/admin/dashboard', function () {
-    return view('admin.dashboard');
-})->name('admin.dashboard')->middleware('auth');
+    Route::post('/forgot-password', [AuthController::class, 'sendResetLinkEmail'])
+        ->name('password.email');
 
-Route::get('/manager/dashboard', function () {
-    return view('manager.dashboard');
-})->name('manager.dashboard')->middleware('auth');
+    Route::get('/reset-password/{token}', [AuthController::class, 'showResetPasswordForm'])
+        ->name('password.reset');
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->name('dashboard')->middleware('auth');
+    Route::post('/reset-password', [AuthController::class, 'resetPassword'])
+        ->name('password.update');
+});
+
+// Authenticated routes
+Route::middleware('auth')->group(function () {
+    // Logout
+    Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
+    Route::post('/logout', [AuthController::class, 'logout'])->name('logout.post');
+
+    // Dashboards
+    Route::get('/user/dashboard', function () {
+        return view('user.dashboard');
+    })->name('user.dashboard')->middleware('can:user-access');
+
+    Route::get('/admin/dashboard', function () {
+        return view('admin.dashboard');
+    })->name('admin.dashboard')->middleware('can:admin-access');
+
+    Route::get('/manager/dashboard', function () {
+        return view('manager.dashboard');
+    })->name('manager.dashboard')->middleware('can:manager-access');
+
+    Route::get('/dashboard', function () {
+        return view('dashboard');
+    })->name('dashboard');
+});
