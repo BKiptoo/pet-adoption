@@ -4,13 +4,14 @@
     tabindex="-1">
     <div
         class="px-4 h-header flex items-center shrink-0 group-data-[sidebar-size=sm]:px-2 group-data-[sidebar-size=sm]:justify-center">
-        <a href="index.html" class="group-data-[sidebar-size=lg]:block hidden">
-            <img src="assets/images/logo/pet-adoption-logo-text.svg" alt="Pet Adoption Logo" class="group-[.dark]:hidden">
-            <img src="assets/images/logo/pet-adoption-logo-text-dark.svg" alt="Pet Adoption Logo"
-                class="group-[.light]:hidden">
+
+        <a href="user.home" class="group-data-[sidebar-size=lg]:block hidden">
+            <img src="assets/images/logo/logo-pet.png" alt="Pet Adoption Logo" class="group-[.dark]:hidden">
+            <img src="assets/images/logo/logo-pet.png" alt="Pet Adoption Logo"
+                class="group-[.light]:hidden"
         </a>
         <a href="index.html" class="group-data-[sidebar-size=lg]:hidden block">
-            <img src="assets/images/logo/pet-adoption-logo-icon.svg" alt="Pet Adoption Icon">
+            <img src="assets/images/logo/logo-pet.png" alt="Pet Adoption Icon">
         </a>
     </div>
     <div id="app-menu-scrollbar" data-scrollbar
