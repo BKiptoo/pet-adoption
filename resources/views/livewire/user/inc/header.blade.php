@@ -24,19 +24,6 @@
             </div>
             <!-- Header Right -->
             <div class="flex items-center gap-1 sm:gap-3">
-                <!-- Dark Light Button -->
-                <button type="button"
-                    class="themeMode size-8 flex-center hover:bg-gray-200 dark:hover:bg-gray-700 rounded-md"
-                    onclick="toggleThemeMode()">
-                    <i
-                        class="ri-contrast-2-line text-[22px] dark:text-dark-text-two dark:before:!content-['\f1bf']"></i>
-                </button>
-                <!-- Settings Button -->
-                {{-- <button type="button" class="size-8 flex-center hover:bg-gray-200 dark:hover:bg-gray-700 rounded-md"
-                    data-drawer-target="app-setting-drawer" data-drawer-show="app-setting-drawer"
-                    data-drawer-placement="right" aria-controls="app-setting-drawer">
-                    <i class="ri-settings-3-line text-[22px] dark:text-dark-text-two animate-spin-slow"></i>
-                </button> --}}
                 <!-- Notification Button -->
                 <div class="relative">
                     <button type="button" data-popover-target="dropdownNotification" data-popover-trigger="click"

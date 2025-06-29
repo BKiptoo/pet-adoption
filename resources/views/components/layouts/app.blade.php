@@ -13,11 +13,16 @@
     <!-- Favicon -->
     <link rel="shortcut icon" type="image/x-icon" href="assets/images/favicon.ico">
     <!-- Style CSS -->
-    <link rel="stylesheet" href="{{asset('assets/css/vendor/jsvectormap.min.css')}}">
-    <link rel="stylesheet" href="{{asset('assets/css/output.css')}}">
+    <link rel="stylesheet" href="{{ asset('assets/css/vendor/jsvectormap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/output.css') }}">
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link href="node_modules/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <!-- choose one -->
+<script src="https://unpkg.com/feather-icons"></script>
+<script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+
 
 </head>
 
@@ -30,30 +35,29 @@
 
     <!-- End App Menu -->
 
-    @if(request()->is('admin/*'))
+    @if (request()->is('admin/*'))
         <livewire:admin.inc.header/>
         <livewire:admin.inc.sidebar/>
     @else
         <livewire:user.inc.header/>
-        <livewire:user.inc.sidebar/>
-    @endif
+        <livewire:user.inc.sidebar/> @endif
 
 
     {{ $slot }}
 
     <script data-cfasync="false"
         src="https://template.codexshaper.com/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
-    <script src="{{asset('assets/js/vendor/jsvectormap/jsvectormap.min.js')}}"></script>
-    <script src="{{asset('assets/js/vendor/jsvectormap/world-merc.min.js')}}"></script>
-    <script src="{{asset('assets/js/vendor/jquery.min.js')}}"></script>
-    <script src="{{asset('assets/js/vendor/apexcharts.min.js')}}"></script>
-    <script src="{{asset('assets/js/vendor/flowbite.min.js')}}"></script>
-    <script src="{{asset('assets/js/vendor/smooth-scrollbar/smooth-scrollbar.min.js')}}"></script>
-    <script src="{{asset('assets/js/pages/dashboard-ecommerce.js')}}"></script>
-    <script src="{{asset('assets/js/component/app-menu-bar.js')}}"></script>
-    <script src="{{asset('assets/js/component/tab.js')}}"></script>
-    <script src="{{asset('assets/js/switcher.js')}}"></script>
-    <script src="{{asset('assets/js/layout.js')}}"></script>
-    <script src="{{asset('assets/js/main.js')}}"></script>
+    <script src="{{ asset('assets/js/vendor/jsvectormap/jsvectormap.min.js') }}"></script>
+    <script src="{{ asset('assets/js/vendor/jsvectormap/world-merc.min.js') }}"></script>
+    <script src="{{ asset('assets/js/vendor/jquery.min.js') }}"></script>
+    <script src="{{ asset('assets/js/vendor/apexcharts.min.js') }}"></script>
+    <script src="{{ asset('assets/js/vendor/flowbite.min.js') }}"></script>
+    <script src="{{ asset('assets/js/vendor/smooth-scrollbar/smooth-scrollbar.min.js') }}"></script>
+    <script src="{{ asset('assets/js/pages/dashboard-ecommerce.js') }}"></script>
+    <script src="{{ asset('assets/js/component/app-menu-bar.js') }}"></script>
+    <script src="{{ asset('assets/js/component/tab.js') }}"></script>
+    <script src="{{ asset('assets/js/switcher.js') }}"></script>
+    <script src="{{ asset('assets/js/layout.js') }}"></script>
+    <script src="{{ asset('assets/js/main.js') }}"></script>
 </body>
 </html>

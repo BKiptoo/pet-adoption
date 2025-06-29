@@ -1,5 +1,4 @@
 <!-- Start App Menu -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 <div id="app-menu-drawer"
     class="app-menu flex flex-col gap-y-2.5 bg-white dark:bg-dark-card w-app-menu fixed top-0 left-0 bottom-0 -translate-x-full group-data-[sidebar-size=sm]:min-h-screen group-data-[sidebar-size=sm]:h-max xl:translate-x-0 rounded-r-10 xl:rounded-15 xl:group-data-[sidebar-size=lg]:w-app-menu xl:group-data-[sidebar-size=sm]:w-app-menu-sm xl:group-data-[sidebar-size=sm]:absolute xl:group-data-[sidebar-size=lg]:fixed xl:top-4 xl:left-4 xl:bottom-4 z-backdrop xl:group-data-[theme-width=box]:left-auto dk-theme-card-square ac-transition"
     tabindex="-1">
@@ -7,7 +6,8 @@
         class="px-4 h-header flex items-center shrink-0 group-data-[sidebar-size=sm]:px-2 group-data-[sidebar-size=sm]:justify-center">
         <a href="index.html" class="group-data-[sidebar-size=lg]:block hidden">
             <img src="assets/images/logo/pet-adoption-logo-text.svg" alt="Pet Adoption Logo" class="group-[.dark]:hidden">
-            <img src="assets/images/logo/pet-adoption-logo-text-dark.svg" alt="Pet Adoption Logo" class="group-[.light]:hidden">
+            <img src="assets/images/logo/pet-adoption-logo-text-dark.svg" alt="Pet Adoption Logo"
+                class="group-[.light]:hidden">
         </a>
         <a href="index.html" class="group-data-[sidebar-size=lg]:hidden block">
             <img src="assets/images/logo/pet-adoption-logo-icon.svg" alt="Pet Adoption Icon">
@@ -24,7 +24,8 @@
                         class="top-layer relative text-gray-500 dark:text-dark-text-two font-medium leading-none px-3.5 py-3 h-[42px] flex items-center group/menu-link ac-transition peer/dp-btn group-data-[sidebar-size=sm]:bg-gray-100 dark:group-data-[sidebar-size=sm]:bg-dark-icon group-data-[sidebar-size=sm]:hover:bg-primary-500/95 group-data-[sidebar-size=sm]:[&.active]:bg-primary-500/95 hover:text-white [&.active]:text-white hover:!bg-primary-500/95 [&.active]:bg-primary-500/95 group-data-[sidebar-size=sm]:rounded-lg group-data-[sidebar-size=sm]:group-hover/sm:!rounded-br-none group-data-[sidebar-size=lg]:rounded-l-full group-data-[sidebar-size=sm]:p-3 group-data-[sidebar-size=sm]:w-full">
                         <span
                             class="shrink-0 group-data-[sidebar-size=sm]:w-[calc(theme('spacing.app-menu-sm')_*_0.43)] group-data-[sidebar-size=sm]:flex-center">
-                            <i class="fas fa-home text-[#EEEEEE] group-hover/menu-link:text-[url(#g_1)] group-[.active]/menu-link:text-[url(#g_1)] dark:text-none"></i>
+                            <i data-feather="circle"
+                                class="fa fa-home text-[#EEEEEE] group-hover/menu-link:text-[url(#g_1)] group-[.active]/menu-link:text-[url(#g_1)] dark:text-none"></i>
                         </span>
                         <span
                             class="group-data-[sidebar-size=sm]:hidden group-data-[sidebar-size=sm]:ml-6 group-data-[sidebar-size=sm]:group-hover/sm:block ml-3 shrink-0">
@@ -38,7 +39,8 @@
                         class="dropdown-button top-layer relative text-gray-500 dark:text-dark-text-two font-medium leading-none px-3.5 py-3 h-[42px] flex items-center group/menu-link ac-transition peer/dp-btn group-data-[sidebar-size=sm]:bg-gray-100 dark:group-data-[sidebar-size=sm]:bg-dark-icon group-data-[sidebar-size=sm]:hover:bg-primary-500/95 group-data-[sidebar-size=sm]:[&.active]:bg-primary-500/95 hover:text-white [&.active]:text-white hover:!bg-primary-500/95 [&.active]:bg-primary-500/95 group-data-[sidebar-size=sm]:rounded-lg group-data-[sidebar-size=sm]:group-hover/sm:!rounded-br-none group-data-[sidebar-size=lg]:rounded-l-full group-data-[sidebar-size=sm]:p-3 group-data-[sidebar-size=sm]:w-full">
                         <span
                             class="shrink-0 group-data-[sidebar-size=sm]:w-[calc(theme('spacing.app-menu-sm')_*_0.43)] group-data-[sidebar-size=sm]:flex-center">
-                            <i class="fas fa-paw text-[#EEEEEE] group-hover/menu-link:text-[url(#g_2)] group-[.active]/menu-link:text-[url(#g_2)] dark:text-none"></i>
+                            <i
+                                class="fas fa-paw text-[#EEEEEE] group-hover/menu-link:text-[url(#g_2)] group-[.active]/menu-link:text-[url(#g_2)] dark:text-none"></i>
                         </span>
                         <span
                             class="group-data-[sidebar-size=sm]:hidden group-data-[sidebar-size=sm]:ml-6 group-data-[sidebar-size=sm]:group-hover/sm:block ml-3 shrink-0">
@@ -69,7 +71,8 @@
                         class="dropdown-button top-layer relative text-gray-500 dark:text-dark-text-two font-medium leading-none px-3.5 py-3 h-[42px] flex items-center group/menu-link ac-transition peer/dp-btn group-data-[sidebar-size=sm]:bg-gray-100 dark:group-data-[sidebar-size=sm]:bg-dark-icon group-data-[sidebar-size=sm]:hover:bg-primary-500/95 group-data-[sidebar-size=sm]:[&.active]:bg-primary-500/95 hover:text-white [&.active]:text-white hover:!bg-primary-500/95 [&.active]:bg-primary-500/95 group-data-[sidebar-size=sm]:rounded-lg group-data-[sidebar-size=sm]:group-hover/sm:!rounded-br-none group-data-[sidebar-size=lg]:rounded-l-full group-data-[sidebar-size=sm]:p-3 group-data-[sidebar-size=sm]:w-full">
                         <span
                             class="shrink-0 group-data-[sidebar-size=sm]:w-[calc(theme('spacing.app-menu-sm')_*_0.43)] group-data-[sidebar-size=sm]:flex-center">
-                            <i class="fas fa-file-alt text-[#EEEEEE] group-hover/menu-link:text-[url(#g_3)] group-[.active]/menu-link:text-[url(#g_3)] dark:text-none"></i>
+                            <i
+                                class="fas fa-file-alt text-[#EEEEEE] group-hover/menu-link:text-[url(#g_3)] group-[.active]/menu-link:text-[url(#g_3)] dark:text-none"></i>
                         </span>
                         <span
                             class="group-data-[sidebar-size=sm]:hidden group-data-[sidebar-size=sm]:ml-6 group-data-[sidebar-size=sm]:group-hover/sm:block ml-3 shrink-0">
@@ -100,7 +103,8 @@
                         class="dropdown-button top-layer relative text-gray-500 dark:text-dark-text-two font-medium leading-none px-3.5 py-3 h-[42px] flex items-center group/menu-link ac-transition peer/dp-btn group-data-[sidebar-size=sm]:bg-gray-100 dark:group-data-[sidebar-size=sm]:bg-dark-icon group-data-[sidebar-size=sm]:hover:bg-primary-500/95 group-data-[sidebar-size=sm]:[&.active]:bg-primary-500/95 hover:text-white [&.active]:text-white hover:!bg-primary-500/95 [&.active]:bg-primary-500/95 group-data-[sidebar-size=sm]:rounded-lg group-data-[sidebar-size=sm]:group-hover/sm:!rounded-br-none group-data-[sidebar-size=lg]:rounded-l-full group-data-[sidebar-size=sm]:p-3 group-data-[sidebar-size=sm]:w-full">
                         <span
                             class="shrink-0 group-data-[sidebar-size=sm]:w-[calc(theme('spacing.app-menu-sm')_*_0.43)] group-data-[sidebar-size=sm]:flex-center">
-                            <i class="fas fa-building text-[#EEEEEE] group-hover/menu-link:text-[url(#g_4)] group-[.active]/menu-link:text-[url(#g_4)] dark:text-none"></i>
+                            <i
+                                class="fas fa-building text-[#EEEEEE] group-hover/menu-link:text-[url(#g_4)] group-[.active]/menu-link:text-[url(#g_4)] dark:text-none"></i>
                         </span>
                         <span
                             class="group-data-[sidebar-size=sm]:hidden group-data-[sidebar-size=sm]:ml-6 group-data-[sidebar-size=sm]:group-hover/sm:block ml-3 shrink-0">
@@ -131,7 +135,8 @@
                         class="dropdown-button top-layer relative text-gray-500 dark:text-dark-text-two font-medium leading-none px-3.5 py-3 h-[42px] flex items-center group/menu-link ac-transition peer/dp-btn group-data-[sidebar-size=sm]:bg-gray-100 dark:group-data-[sidebar-size=sm]:bg-dark-icon group-data-[sidebar-size=sm]:hover:bg-primary-500/95 group-data-[sidebar-size=sm]:[&.active]:bg-primary-500/95 hover:text-white [&.active]:text-white hover:!bg-primary-500/95 [&.active]:bg-primary-500/95 group-data-[sidebar-size=sm]:rounded-lg group-data-[sidebar-size=sm]:group-hover/sm:!rounded-br-none group-data-[sidebar-size=lg]:rounded-l-full group-data-[sidebar-size=sm]:p-3 group-data-[sidebar-size=sm]:w-full">
                         <span
                             class="shrink-0 group-data-[sidebar-size=sm]:w-[calc(theme('spacing.app-menu-sm')_*_0.43)] group-data-[sidebar-size=sm]:flex-center">
-                            <i class="fas fa-user text-[#EEEEEE] group-hover/menu-link:text-[url(#g_5)] group-[.active]/menu-link:text-[url(#g_5)] dark:text-none"></i>
+                            <i
+                                class="fas fa-user text-[#EEEEEE] group-hover/menu-link:text-[url(#g_5)] group-[.active]/menu-link:text-[url(#g_5)] dark:text-none"></i>
                         </span>
                         <span
                             class="group-data-[sidebar-size=sm]:hidden group-data-[sidebar-size=sm]:ml-6 group-data-[sidebar-size=sm]:group-hover/sm:block ml-3 shrink-0">
@@ -166,7 +171,8 @@
                         class="relative text-gray-500 dark:text-dark-text-two font-medium leading-none px-3.5 py-3 h-[42px] flex items-center group/menu-link ac-transition group-data-[sidebar-size=sm]:bg-gray-100 dark:group-data-[sidebar-size=sm]:bg-dark-icon group-data-[sidebar-size=sm]:hover:bg-primary-500/95 group-data-[sidebar-size=sm]:[&.active]:bg-primary-500/95 hover:text-white [&.active]:text-white hover:!bg-primary-500/95 [&.active]:bg-primary-500/95 group-data-[sidebar-size=sm]:rounded-lg group data-[sidebar-size=sm]:group-hover/sm:!rounded-br-none group-data-[sidebar-size=lg]:rounded-l-full group-data-[sidebar-size=sm]:p-3 group-data-[sidebar-size=sm]:w-full">
                         <span
                             class="shrink-0 group-data-[sidebar-size=sm]:w-[calc(theme('spacing.app-menu-sm')_*_0.43)] group-data-[sidebar-size=sm]:flex-center">
-                            <i class="fas fa-heart text-[#EEEEEE] group-hover/menu-link:text-[url(#g_6)] group-[.active]/menu-link:text-[url(#g_6)] dark:text-none"></i>
+                            <i
+                                class="fas fa-heart text-[#EEEEEE] group-hover/menu-link:text-[url(#g_6)] group-[.active]/menu-link:text-[url(#g_6)] dark:text-none"></i>
                         </span>
                         <span
                             class="group-data-[sidebar-size=sm]:hidden group-data-[sidebar-size=sm]:ml-6 group-data-[sidebar-size=sm]:group-hover/sm:block ml-3 shrink-0">
