@@ -9,12 +9,13 @@ use Spatie\Sluggable\HasSlug;
 use Laravel\Sanctum\HasApiTokens;
 use Spatie\Sluggable\SlugOptions;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
-    use HasApiTokens, HasFactory, Notifiable,HasSlug,Uuids;
+    use HasApiTokens, HasFactory, Notifiable, HasSlug, Uuids, SoftDeletes;
 
     /**
      * Indicates if the IDs are auto-incrementing.
@@ -41,6 +42,7 @@ class User extends Authenticatable
         'email',
         'phoneNumber',
         'password',
+        'profile_photo_path',
         'isActive',
         'isOtpVerified',
         'hasToChangePassword',

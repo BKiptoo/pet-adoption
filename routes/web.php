@@ -5,6 +5,7 @@ use App\Livewire\Auth\Register;
 use App\Livewire\User\UserHome;
 use App\Livewire\Auth\ResetPassword;
 use App\Livewire\Auth\ForgotPassword;
+use App\Livewire\User\Account\Profile;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -32,3 +33,8 @@ Route::get('reset-password/{token}', ResetPassword::class)->name('reset-password
 
 //user dashboard
    Route::get('home', UserHome::class)->name('user.home');
+
+
+
+//user profile
+Route::get ('profile', Profile::class)->name('user.profile');
